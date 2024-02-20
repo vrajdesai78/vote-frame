@@ -11,8 +11,6 @@ export async function GET(request: Request) {
 
 	const { data, error } = await client.from('Proposal').select(`upvote, downvote`).eq('id', id).single()
 
-	console.log(data, error)
-
 	if (error) {
 		return new Response('Not found', { status: 404 })
 	}

@@ -15,8 +15,6 @@ export async function GET(request: Request) {
     .eq('id', id)
     .single();
 
-  console.log(data, error);
-
   if (error) {
     return new Response('Not found', { status: 404 });
   }
