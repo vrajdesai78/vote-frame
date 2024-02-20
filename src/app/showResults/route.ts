@@ -17,15 +17,6 @@ export async function POST(request: Request) {
     return new Response('Invalid Frame Request', { status: 400 });
   }
 
-  if (message.button === 1) {
-    return new Response('Joining room', {
-      status: 302,
-      headers: {
-        Location: 'https://myriad-zk.vercel.app',
-      },
-    });
-  }
-
   try {
     return new Response(
       `
@@ -37,7 +28,7 @@ export async function POST(request: Request) {
                 <meta property="og:image" content="${process.env.HOST_URL}/result?id=${id}" />
                 <meta name="fc:frame" content="vNext">
                 <meta name="fc:frame:image" content="${process.env.HOST_URL}/result?id=${id}">
-                <meta name="fc:frame:post_url" content="${process.env.HOST_URL}/showResults?id=${id}">
+                <meta name="fc:frame:post_url" content="${process.env.HOST_URL}/${id}">
                 <meta name="fc:frame:button:1" content="Visit Website">
                 <meta name="fc:frame:button:1:action content="post_redirect"> 
             </head>
